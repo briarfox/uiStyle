@@ -37,8 +37,6 @@ def style(style_view, view):  # function and parameter have same name... Eeekk.
         except Exception, e:
             print e
     style_list = _generate_styles(style_view)
-    print(type(view))
-    print(type(style_view))
     view.background_color = style_view.background_color
     for v in view.subviews:
         passed_type = object_type_as_str(v)
