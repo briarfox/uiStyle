@@ -14,21 +14,18 @@ To use:
 '''
 import ui
 
-#attributes to style. 
-#These attributes will be used to style the passed ui.view
+#attributes to style -- these attributes will be used to style the passed ui.view
 attr_list = '''alignment alpha background_color bar_tint_color border_color border_width bordered 
     corner_radius font indicator_style line_break_mode text_color tint_color title_color'''.split()
-
-#style_list = {}  # do we need this global?
 
 def object_type_as_str(obj):
     return str(type(obj).__name__)
 
-def style(style_view, view):  # function and parameter have same name... Eeekk.
+def style(style_view, view):
     '''
     Used to set the style of a ui.View. 
-    style(style,view)
-    @param (string|ui.View) style - ui.View or String path of the ui.View
+    style(style_view,view)
+    @param (string|ui.View) style_view - ui.View or String path of the ui.View
     @param (ui.View) view - view to style
     '''
     if type(style_view) == str:
@@ -42,7 +39,7 @@ def style(style_view, view):  # function and parameter have same name... Eeekk.
         passed_type = object_type_as_str(v)
         if v.name and passed_type in style_list:
             for key in style_list[passed_type]:
-                if key in v.name:
+                if v.name.startswith(key):
                     for attr in attr_list:
                         try:
                             style_attr = getattr(style_view[key], str(attr))
